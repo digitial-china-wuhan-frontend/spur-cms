@@ -5,6 +5,7 @@
   "description": "A Strapi application",
   "scripts": {
     "develop": "strapi develop",
+    "dev": "strapi dev",
     "start:pm2": "pm2 start ecosystem.config.js",
     "start": "strapi start",
     "build": "strapi build",
