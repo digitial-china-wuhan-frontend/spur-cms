@@ -13,6 +13,7 @@
   },
   "devDependencies": {},
   "dependencies": {
+    "axios": "^0.21.0",
     "strapi": "3.2.3",
     "strapi-admin": "3.2.3",
     "strapi-connector-mongoose": "3.2.3",
