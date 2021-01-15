@@ -6,7 +6,8 @@
  */
 const axios = require("axios");
 
-const hooksUri = strapi.config.get("webhooks.uri");
+const publishURI = strapi.config.get("webhooks.publish");
+const notificationURI = strapi.config.get("webhooks.notification");
 
 module.exports = {
   lifecycles: {
@@ -15,14 +16,21 @@ module.exports = {
     },
     async afterUpdate(result, params, data) {
       console.error("afterUpdate");
-      axios
-        .post(hooksUri, {})
-        .then((response) => {
-          console.log(response);
-        })
-        .catch((error) => {
-          console.error(error);
+      console.log(publishURI);
+      console.log(notificationURI);
+      try {
+        const response1 = await axios.post(publishURI, {});
+        console.error(response1);
+        const response2 = await axios.post(notificationURI, {
+          msgtype: "text",
+          text: {
+            content: "新故事发布了",
+          },
         });
+        console.error(response2);
+      } catch (error) {
+        console.error(error);
+      }
     },
   },
 };

@@ -1,3 +1,4 @@
 module.exports = ({ env }) => ({
-  uri: env("WEBHOOK_URI"),
+  publish: env("WEBHOOK_URI_PUBLISH"),
+  notification: env("WEBHOOK_URI_NOTIFICATION"),
 });
